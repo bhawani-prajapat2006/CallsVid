@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import {createServer} from "node:http";
 
@@ -25,7 +28,7 @@ app.get("/home",(req, res) => {
 
 
 const start = async() => {
-    const connectDB = await mongoose.connect("mongodb+srv://bhawanishankarp2006:skt2006@cluster0.txpxjlp.mongodb.net/");
+    const connectDB = await mongoose.connect(process.env.MONGO_URI);
     console.log(`Mongo connected DB Host : ${connectDB.connection.host}`)
     server.listen(app.get("port"), () => {
         console.log(`Listening to port ${app.get("port")}`); 
