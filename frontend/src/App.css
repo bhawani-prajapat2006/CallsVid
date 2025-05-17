@@ -1,0 +1,97 @@
+.landingPageContainer{
+  width: 100vw;
+  height: 100vh;
+  background: url("/background.png"); 
+  background-size: cover;
+  color: white;
+} 
+
+.landingPageContainer nav{
+  padding-inline: 1.5rem;
+  padding-block: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.landingPageContainer nav h2{
+  font-size: 2.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.landingPageContainer nav img{
+  width: 3.5rem;
+}
+
+.heading-with-logo{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav{
+  display: flex;
+  align-items: center;  /* Aligns content (like text + icons) vertically centered */
+  justify-content: center;
+  text-align: center;
+  padding: 0.4rem 1rem;
+  gap: 1rem;
+}
+
+.nav-pills .nav-link.active {
+  background-color: #e34e08; 
+  color: white !important;   
+  margin-left: 0.8rem;
+  cursor: pointer;
+}
+
+.nav-pills .nav-link.active:hover {
+  background-color: #c06151; 
+}
+
+.nav-pills .nav-link:not(.active) {  
+  color: white;                
+  font-size: 1.3rem;   
+  cursor: pointer;
+}
+
+.landingMainContainer{
+  display: flex;
+  justify-content: space-between;
+}
+
+.imageContainer{
+  margin: 5rem 4rem;
+  position: relative;
+  
+}
+
+.imageContainer img{
+  border-radius: 2rem;
+  display: block;
+  width: 95%;
+}
+
+.startContainer h2, p{
+  padding: 0 1.8rem;
+}
+
+.startContainer h2{
+  padding-bottom: 0.5rem;
+  font-size: 2.5rem;
+}
+
+.startContainer p{
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+.startContainer{
+  margin: 8rem 2rem;
+}
+
+.app-name{
+  color: #e34e08;
+  font-size: 3rem;
+}
