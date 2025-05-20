@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
 export default function LandingPage() {
   return (
@@ -14,17 +15,17 @@ export default function LandingPage() {
         <div className="navList">
           <ul class="nav nav-pills justify-content-end">
             <li class="nav-item">
-              <Link class="nav-link" href="#">
+              <Link class="nav-link" to={""}>
                 Join As Guest
               </Link>
             </li>
             <li class="nav-item">
-              <Link class="nav-link" href="#">
+              <Link class="nav-link" to={"/signup"}>
                 Register
               </Link>
             </li>
             <li class="nav-item">
-              <Link class="nav-link active" aria-current="page" href="#">
+              <Link class="nav-link active" aria-current="page" to={"/auth"}>
                 <i class="fa-solid fa-arrow-right-to-bracket"></i> <span style={{marginLeft: "0.3rem"}}>Login</span>
               </Link>
             </li>
@@ -38,7 +39,7 @@ export default function LandingPage() {
           <h2>Where Every Call Feels Personal.</h2>
           <p>Stay close to who matters most, no matter where you are.</p>
           <div className="nav nav-pills justify-content-start">
-            <Link class="nav-link active" aria-current="page" href="">
+            <Link class="nav-link active" aria-current="page" to={"/auth"}>
               <span style={{marginLeft: "0.3rem"}} >Get Started &nbsp;</span> <i class="fa-solid fa-arrow-right"></i>
             </Link>
           </div>
