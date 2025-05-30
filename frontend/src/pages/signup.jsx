@@ -18,6 +18,11 @@ import { Snackbar } from "@mui/material";
 import { AuthContext } from "../contexts/AuthContext.jsx";
 
 const Card = styled(MuiCard)(({ theme }) => ({
+  margin: "1rem 0",
+  backgroundColor: "#1e1e2f",
+  backdropFilter: "blur(10px)",
+  border: "2px solid rgba(255, 255, 255, 0.2)",
+  color: "#d1d1e0",
   display: "flex",
   flexDirection: "column",
   alignSelf: "center",
@@ -25,7 +30,6 @@ const Card = styled(MuiCard)(({ theme }) => ({
   padding: theme.spacing(8),
   paddingTop: "2.5rem",
   gap: theme.spacing(2),
-  margin: "auto",
   boxShadow:
     "hsla(220, 30%, 5%, 0.05) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.05) 0px 15px 35px -5px",
   [theme.breakpoints.up("sm")]: {
@@ -66,7 +70,6 @@ export default function SignUp(props) {
       setName("");
       setUsername("");
       setPassword("");
-
     } catch (err) {
       let message = err.response.data.message;
       setError(message);
@@ -158,7 +161,9 @@ export default function SignUp(props) {
           }}
         >
           <FormControl>
-            <FormLabel htmlFor="name">Full name</FormLabel>
+            <FormLabel style={{ color: "#d1d1e0" }}>
+              Full name
+            </FormLabel>
             <TextField
               size="small"
               name="name"
@@ -172,11 +177,41 @@ export default function SignUp(props) {
               // color={nameError ? "error" : "primary"}
               autoComplete="off"
               value={name}
+              sx={{
+                color: "black",
+                backgroundColor: "#d1d1e0",
+                borderRadius: "12px",
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "12px",
+                  backgroundColor: "#1e1e2f",
+                  color: "white",
+                  "& fieldset": {
+                    borderColor: "#555",
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "#888",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#a855f7",
+                  },
+                },
+                "& input": {
+                  color: "white",
+                },
+                "& label": {
+                  color: "#aaa",
+                },
+                "& label.Mui-focused": {
+                  color: "#a855f7",
+                },
+              }}
               onChange={(e) => setName(e.target.value)}
             />
           </FormControl>
           <FormControl>
-            <FormLabel htmlFor="username">Username</FormLabel>
+            <FormLabel style={{ color: "#d1d1e0" }}>
+              Username
+            </FormLabel>
             <TextField
               size="small"
               required
@@ -187,11 +222,41 @@ export default function SignUp(props) {
               variant="outlined"
               autoComplete="new-username"
               value={username}
+              sx={{
+                color: "black",
+                backgroundColor: "#d1d1e0",
+                borderRadius: "12px",
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "12px",
+                  backgroundColor: "#1e1e2f",
+                  color: "white",
+                  "& fieldset": {
+                    borderColor: "#555",
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "#888",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#a855f7",
+                  },
+                },
+                "& input": {
+                  color: "white",
+                },
+                "& label": {
+                  color: "#aaa",
+                },
+                "& label.Mui-focused": {
+                  color: "#a855f7",
+                },
+              }}
               onChange={(e) => setUsername(e.target.value)}
             />
           </FormControl>
           <FormControl>
-            <FormLabel htmlFor="password">Password</FormLabel>
+            <FormLabel style={{ color: "#d1d1e0" }}>
+              Password
+            </FormLabel>
             <TextField
               size="small"
               required
@@ -206,10 +271,44 @@ export default function SignUp(props) {
               // helperText={passwordErrorMessage}
               // color={passwordError ? "error" : "primary"}
               value={password}
+              sx={{
+                color: "black",
+                backgroundColor: "#d1d1e0",
+                borderRadius: "12px",
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "12px",
+                  backgroundColor: "#1e1e2f",
+                  color: "white",
+                  "& fieldset": {
+                    borderColor: "#555",
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "#888",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#a855f7",
+                  },
+                },
+                "& input": {
+                  color: "white",
+                },
+                "& label": {
+                  color: "#aaa",
+                },
+                "& label.Mui-focused": {
+                  color: "#a855f7",
+                },
+              }}
               onChange={(e) => setPassword(e.target.value)}
             />
           </FormControl>
           <FormControlLabel
+            sx={{
+              color: "#d1d1e0", // border color when unchecked
+              "&.Mui-checked": {
+                color: " #7f5af0", // color when checked
+              },
+            }}
             control={<Checkbox value="allowExtraEmails" color="primary" />}
             label="I want to receive updates via email."
           />
@@ -221,7 +320,11 @@ export default function SignUp(props) {
             fullWidth
             variant="contained"
             onClick={handleSignup}
-            sx={{ textTransform: "none", borderRadius: "0.5rem" }}
+            sx={{
+              textTransform: "none",
+              borderRadius: "0.5rem",
+              backgroundColor: " #7f5af0",
+            }}
           >
             Sign up
           </Button>
@@ -232,14 +335,22 @@ export default function SignUp(props) {
             component={RouterLink}
             to="/auth"
             variant="body2"
-            sx={{ alignSelf: "center" }}
+            sx={{ alignSelf: "center", color: " #7f5af0", textDecoration: "none" }}
           >
             Sign in
           </Link>
         </Typography>
-        <Divider>
-          <Typography sx={{ color: "text.secondary" }}>or</Typography>
-        </Divider>
+        <Divider
+  sx={{
+    color: '#d1d1e0',       // text color (inherits if no Typography used)
+    '&::before, &::after': {
+      borderColor: '#444',  // line color for the before and after elements
+    },
+  }}
+>
+  or
+</Divider>
+
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <Button
             fullWidth
@@ -247,8 +358,8 @@ export default function SignUp(props) {
             onClick={() => alert("Sign up with Google")}
             startIcon={<GoogleIcon />}
             sx={{
-              color: "black",
-              borderColor: "black",
+              color: "#d1d1e0",
+              borderColor: "#d1d1e0",
               textTransform: "none",
               fontWeight: 500,
               fontSize: "0.9rem",
@@ -256,8 +367,9 @@ export default function SignUp(props) {
               letterSpacing: "0.5px",
               borderRadius: "5rem",
               "&:hover": {
-                borderColor: "black",
-                backgroundColor: "#f5f5f5",
+                color: "black",
+                borderColor: "none",
+                backgroundColor: "#d1d1e0",
               },
             }}
           >
@@ -269,8 +381,8 @@ export default function SignUp(props) {
             onClick={() => alert("Sign up with Facebook")}
             startIcon={<FacebookIcon />}
             sx={{
-              color: "black",
-              borderColor: "black",
+              color: "#d1d1e0",
+              borderColor: "#d1d1e0",
               textTransform: "none",
               fontWeight: 500,
               fontSize: "0.9rem",
@@ -278,8 +390,9 @@ export default function SignUp(props) {
               letterSpacing: "0.5px",
               borderRadius: "5rem",
               "&:hover": {
-                borderColor: "black",
-                backgroundColor: "#f5f5f5",
+                color: "black",
+                borderColor: "none",
+                backgroundColor: "#d1d1e0",
               },
             }}
           >
