@@ -64,11 +64,6 @@ CallsVid/
 |   |   |   └── users.routes.js
 |   |   ├── app.js             
 ├── frontend/
-│   ├── public/
-|   |   ├── background.png
-|   |   ├── callsvid_logo.png
-|   |   ├── mobile.png
-|   |   └── videocalling.avif
 │   └── src/
 │       ├── App.jsx
 |       ├── App.css
