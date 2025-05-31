@@ -19,7 +19,6 @@ import ChatIcon from "@mui/icons-material/Chat";
 import Badge from "@mui/material/Badge";
 
 import io from "socket.io-client";
-import { flexDirection, height, width } from "@mui/system";
 
 const server_url = import.meta.env.VITE_SERVER_URL;
 
@@ -53,7 +52,7 @@ export default function VideoMeet() {
 
   let [message, setMessage] = useState("");
 
-  let [newMessages, setNewMessages] = useState(3);
+  let [newMessages, setNewMessages] = useState(0);
 
   let [askForUsername, setAskForUsername] = useState(true);
 
@@ -69,6 +68,15 @@ export default function VideoMeet() {
   //if(isChrome() === false){
 
   // }
+
+  const getAvatarData = (name) => {
+    const colors = ["#FF6B6B", "#6BCB77", "#4D96FF", "#FFC75F", "#A66DD4"];
+    const initial = name ? name.charAt(0).toUpperCase() : "?";
+    const colorIndex = name ? name.charCodeAt(0) % colors.length : 0;
+    const backgroundColor = colors[colorIndex];
+
+    return { initial, backgroundColor };
+  };
 
   const getPermissions = async () => {
     try {
@@ -294,7 +302,16 @@ export default function VideoMeet() {
   };
 
   // todo addMessage
-  let addMessage = () => {};
+  let addMessage = (data, sender, timestamp, socketIdSender, isHistory) => {
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { sender: sender, data: data, timestamp: timestamp },
+    ]);
+
+    if (!isHistory && socketIdSender !== socketIdRef.current) {
+      setNewMessages((prevMessages) => prevMessages + 1);
+    }
+  };
 
   let connectToSocketServer = () => {
     socketRef.current = io.connect(server_url, { secure: false });
@@ -436,6 +453,12 @@ export default function VideoMeet() {
     setChatOpen(!chatOpen);
   };
 
+  useEffect(() => {
+    if (chatOpen) {
+      setNewMessages(0);
+    }
+  }, [chatOpen]);
+
   let getDisplayMediaSuccess = (stream) => {
     try {
       window.localStream.getTracks().forEach((track) => track.stop());
@@ -508,6 +531,12 @@ export default function VideoMeet() {
 
   let handleScreen = () => {
     setScreen(!screen);
+  };
+
+  let sendMessage = () => {
+    const timestamp = new Date().toISOString();
+    socketRef.current.emit("chat-message", message, username, timestamp);
+    setMessage("");
   };
 
   useEffect(() => {
@@ -593,35 +622,78 @@ export default function VideoMeet() {
         </div>
       ) : (
         <div className="videoMeetContainer">
-          <div className="chatRoom">
-            {chatOpen === true ? (
-              <Box
-                sx={{
-                  position: "fixed",
-                  top: 0,
-                  right: 0,
-                  height: "100vh",
-                  width: "500px",
-                  color: "white",
-                  textAlign: "center",
-                  backgroundColor: "#2c2c2c",
-                  borderTopLeftRadius: "20px",
-                  borderBottomLeftRadius: "20px",
-                  boxShadow: "-2px 0 5px rgba(0,0,0,0.1)",
-                  padding: "16px",
-                  zIndex: 1200, // Above most things
-                  overflowY: "auto",
-                }}
-              >
-                <Typography variant="h4" gutterBottom>
-                  Chats
-                </Typography>
-               
-              </Box>
-            ) : (
-              <></>
-            )}
-          </div>
+          {chatOpen === true ? (
+            <Box className="chatRoom">
+              <Typography variant="h4" gutterBottom>
+                Chats
+              </Typography>
+
+              <div className="messages">
+                {messages.length > 0 ? (
+                  messages.map((item, index) => {
+                    const isSent = item.sender === username; 
+                    const { initial, backgroundColor } = getAvatarData(
+                      item.sender
+                    );
+
+                    return (
+                      <div
+                        key={index}
+                        className={`message ${isSent ? "sent" : "received"}`}
+                      >
+            
+                        {!isSent && (
+                          <div
+                            className="avatar"
+                            style={{
+                              backgroundColor,
+                            }}
+                            title={item.sender}
+                          >
+                            {initial}
+                          </div>
+                        )}
+
+                        <div className="bubble">
+                          
+                          {!isSent && <div className="name">{item.sender}</div>}
+                          <div className="text">{item.data}</div>
+                          
+                          {item.timestamp ? (
+                            <div className="timestamp">
+                              {new Date(item.timestamp).toLocaleTimeString([], {
+                                hour: "2-digit",
+                                minute: "2-digit",
+                                hour12: true,
+                              })}
+                            </div>
+                          ) : (
+                            <div></div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <>No messages yet</>
+                )}
+              </div>
+
+              <div className="chatBox">
+                <input
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  className="form-control"
+                  placeholder="Message"
+                />
+                <button onClick={sendMessage} class="btn btn-primary">
+                  <i class="fa-solid fa-paper-plane"></i>
+                </button>
+              </div>
+            </Box>
+          ) : (
+            <></>
+          )}
 
           <div className="buttonContainer">
             {/* <Box
