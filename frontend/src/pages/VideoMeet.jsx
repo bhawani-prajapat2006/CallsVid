@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "../styles/VideoMeet.css";
 import TextField from "@mui/material/TextField";
@@ -63,6 +64,7 @@ export default function VideoMeet() {
   let [videos, setVideos] = useState([]);
 
   const [chatOpen, setChatOpen] = useState(false);
+  const chatOpenRef = useRef(chatOpen);
 
   // todo
   //if(isChrome() === false){
@@ -308,7 +310,7 @@ export default function VideoMeet() {
       { sender: sender, data: data, timestamp: timestamp },
     ]);
 
-    if (!isHistory && socketIdSender !== socketIdRef.current) {
+    if (!isHistory && !chatOpenRef.current && socketIdSender !== socketIdRef.current) {
       setNewMessages((prevMessages) => prevMessages + 1);
     }
   };
@@ -422,6 +424,8 @@ export default function VideoMeet() {
     connectToSocketServer();
   };
 
+  let routeTo = useNavigate();
+
   let connect = () => {
     setAskForUsername(false);
     getMedia();
@@ -452,6 +456,11 @@ export default function VideoMeet() {
   let handleChat = () => {
     setChatOpen(!chatOpen);
   };
+
+  useEffect(() => {
+  chatOpenRef.current = chatOpen;
+}, [chatOpen]);
+
 
   useEffect(() => {
     if (chatOpen) {
@@ -539,6 +548,17 @@ export default function VideoMeet() {
     setMessage("");
   };
 
+  let handleEndCall = () => {
+    try {
+      let tracks = localVideoRef.current.srcObject.getTracks();
+      tracks.forEach(track => track.stop());
+    } catch (e) {
+      console.log(e);
+    }
+
+    routeTo("/home")
+  }
+
   useEffect(() => {
     if (videos.length > 0) {
       document.body.style.background = "black";
@@ -624,7 +644,7 @@ export default function VideoMeet() {
         <div className="videoMeetContainer">
           {chatOpen === true ? (
             <Box className="chatRoom">
-              <Typography variant="h4" gutterBottom>
+              <Typography style={{color: "#A0AEC0"}} variant="h4" gutterBottom>
                 Chats
               </Typography>
 
@@ -736,7 +756,7 @@ export default function VideoMeet() {
                 transform: "translateX(-50%)",
                 backgroundColor: "#2c2c2c",
                 borderRadius: "30px",
-                padding: "10px 40px",
+                padding: "10px 20px",
                 display: "flex",
                 gap: 3,
                 zIndex: 1000,
@@ -810,6 +830,7 @@ export default function VideoMeet() {
               )}
 
               <IconButton
+                onClick={handleEndCall}
                 sx={{
                   backgroundColor: "red",
                   color: "white",

@@ -16,7 +16,8 @@ export default function LandingPage() {
         <div className="navList">
           <ul class="nav nav-pills justify-content-end">
             <li class="nav-item">
-              <Link class="nav-link" to={""}>
+              <Link class="nav-link"
+              to={"/guest_meet"}>
                 Join As Guest
               </Link>
             </li>

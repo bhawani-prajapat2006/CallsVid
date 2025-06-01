@@ -101,7 +101,8 @@ h2 {
   width: 500px;
   color: white;
   text-align: center;
-  background-color: #1e1e2f;
+  /* background-color: #1e1e2f; */
+  background-color: #1E1E2E;
   border: 3px solid rgba(255, 255, 255, 0.2);
   border-right: none;
   border-top-left-radius: 20px;
@@ -186,17 +187,24 @@ h2 {
 
 .message.sent .bubble {
   background-color: #274378;
+  /* background-color: 	#60A5FA; */
+}
+
+.message.received .bubble{
+  background-color: #2A2A40;
 }
 
 .text {
   font-size: 14px;
   margin-bottom: 5px;
+  color: #E5E5E5;
 }
 
 .timestamp {
   font-size: 10px;
   text-align: right;
-  color: black;
+  /* color: black; */
+  color: #A0AEC0;
 }
 
 .name {
@@ -207,6 +215,7 @@ h2 {
 }
 
 .message.received .name {
-  color: #a1e33e;
+  /* color: #a1e33e; */
+  color: #38BDF8;
 }
 

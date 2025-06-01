@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import { GoogleIcon, FacebookIcon } from "../components/CustomIcons.jsx";
 
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { Snackbar } from "@mui/material";
 import { AuthContext } from "../contexts/AuthContext.jsx";
 
@@ -58,9 +58,13 @@ export default function SignUp(props) {
   const [message, setMessage] = React.useState();
   const [open, setOpen] = React.useState(false);
 
+  const router = useNavigate();
+
   const { handleRegister } = React.useContext(AuthContext);
 
-  let handleSignup = async () => {
+  let handleSignup = async (e) => {
+    e.preventDefault();
+
     try {
       let result = await handleRegister(name, username, password);
       console.log(result);
@@ -70,6 +74,9 @@ export default function SignUp(props) {
       setName("");
       setUsername("");
       setPassword("");
+
+      router("/auth");
+      
     } catch (err) {
       let message = err.response.data.message;
       setError(message);

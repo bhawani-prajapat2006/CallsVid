@@ -41,6 +41,7 @@ export const AuthProvider = ({children}) => {
 
             if(request.status === httpStatus.OK){
                 localStorage.setItem("token",request.data.token);
+                router("/home")
                 return "Login Successful"
             }
 
@@ -51,8 +52,37 @@ export const AuthProvider = ({children}) => {
 
     const router = useNavigate();
 
+    const getHistoryOfUser = async() => {
+        try {
+            let request = await client.get("/get_all_activity", {
+                params: {
+                    token: localStorage.getItem("token")
+                }
+            })
+
+            return request.data;
+
+        } catch (e) {
+            throw(e);
+        }
+    }
+
+    const addToUserHistory = async(meetingCode) => {
+        try {
+            let request = await client.post("/add_to_activity", {
+                token: localStorage.getItem("token"),
+                meeting_code: meetingCode
+            });
+
+            return request;
+
+        } catch (e) {
+            throw e;
+        }
+    }
+
     const data = {
-        userData, setUserData, handleRegister, handleLogin
+        userData, setUserData, addToUserHistory, getHistoryOfUser, handleRegister, handleLogin
     }
 
     return(
