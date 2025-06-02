@@ -54,19 +54,6 @@ export default function LandingPage() {
           <img src="videocalling.avif" className="main-img"></img>
         </div>
       </div>
-
-      <div
-        style={{ display: "flex", justifyContent: "flex-end", padding: "1rem" }}
-      >
-        <a
-          href="https://github.com/bhawani-prajapat2006/CallsVid"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: "white", textDecoration: "none", transform: "none" }}
-        >
-          <GitHubIcon style={{ fontSize: "2rem" }} />
-        </a>
-      </div>
     </div>
   );
 }

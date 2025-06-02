@@ -69,7 +69,7 @@ function Home() {
               size="small"
               label="Meeting Code"
               variant="outlined"
-              //   value={meetingCode}
+              value={meetingCode}
               onChange={(e) => setMeetingCode(e.target.value)}
               InputProps={{
                 sx: {

@@ -42,14 +42,6 @@ const Card = styled(MuiCard)(({ theme }) => ({
 }));
 
 export default function SignUp(props) {
-  // const [emailError, setEmailError] = React.useState(false);
-  // const [emailErrorMessage, setEmailErrorMessage] = React.useState("");
-  // const [passwordError, setPasswordError] = React.useState(false);
-  // const [passwordErrorMessage, setPasswordErrorMessage] = React.useState("");
-  // const [nameError, setNameError] = React.useState(false);
-  // const [nameErrorMessage, setNameErrorMessage] = React.useState("");
-
-  // const [formState, setFormState] = React.useState(0);
 
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -83,57 +75,6 @@ export default function SignUp(props) {
     }
   };
 
-  // const validateInputs = () => {
-  //   const email = document.getElementById("email");
-  //   const password = document.getElementById("password");
-  //   const name = document.getElementById("name");
-
-  //   let isValid = true;
-
-  //   if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
-  //     setEmailError(true);
-  //     setEmailErrorMessage("Please enter a valid email address.");
-  //     isValid = false;
-  //   } else {
-  //     setEmailError(false);
-  //     setEmailErrorMessage("");
-  //   }
-
-  //   if (!password.value || password.value.length < 6) {
-  //     setPasswordError(true);
-  //     setPasswordErrorMessage("Password must be at least 6 characters long.");
-  //     isValid = false;
-  //   } else {
-  //     setPasswordError(false);
-  //     setPasswordErrorMessage("");
-  //   }
-
-  //   if (!name.value || name.value.length < 1) {
-  //     setNameError(true);
-  //     setNameErrorMessage("Name is required.");
-  //     isValid = false;
-  //   } else {
-  //     setNameError(false);
-  //     setNameErrorMessage("");
-  //   }
-
-  //   return isValid;
-  // };
-
-  // const handleSubmit = (event) => {
-  //   if (nameError || emailError || passwordError) {
-  //     event.preventDefault();
-  //     return;
-  //   }
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     name: data.get("name"),
-  //     lastName: data.get("lastName"),
-  //     email: data.get("email"),
-  //     password: data.get("password"),
-  //   });
-  // };
-
   return (
     <Box
       sx={{
@@ -159,7 +100,6 @@ export default function SignUp(props) {
         <Box
           component="form"
           autoComplete="off"
-          // onSubmit={handleSubmit}
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -179,9 +119,6 @@ export default function SignUp(props) {
               variant="outlined"
               id="name"
               placeholder="Enter you full name"
-              // error={nameError}
-              // helperText={nameErrorMessage}
-              // color={nameError ? "error" : "primary"}
               autoComplete="off"
               value={name}
               sx={{
@@ -272,11 +209,7 @@ export default function SignUp(props) {
               placeholder="••••••"
               type="password"
               id="password"
-              // autoComplete="new-password"
               variant="outlined"
-              // error={passwordError}
-              // helperText={passwordErrorMessage}
-              // color={passwordError ? "error" : "primary"}
               value={password}
               sx={{
                 color: "black",
@@ -311,9 +244,9 @@ export default function SignUp(props) {
           </FormControl>
           <FormControlLabel
             sx={{
-              color: "#d1d1e0", // border color when unchecked
+              color: "#d1d1e0", 
               "&.Mui-checked": {
-                color: " #7f5af0", // color when checked
+                color: " #7f5af0", 
               },
             }}
             control={<Checkbox value="allowExtraEmails" color="primary" />}
@@ -349,9 +282,9 @@ export default function SignUp(props) {
         </Typography>
         <Divider
   sx={{
-    color: '#d1d1e0',       // text color (inherits if no Typography used)
+    color: '#d1d1e0',       
     '&::before, &::after': {
-      borderColor: '#444',  // line color for the before and after elements
+      borderColor: '#444',  
     },
   }}
 >

@@ -716,38 +716,7 @@ export default function VideoMeet() {
           )}
 
           <div className="buttonContainer">
-            {/* <Box
-      sx={{
-        position: 'fixed',
-        bottom: 20,
-        left: '50%',
-        transform: 'translateX(-50%)',
-        backgroundColor: '#2c2c2c',
-        borderRadius: '30px',
-        padding: '10px 40px',
-        display: 'flex',
-        gap: 6,
-        zIndex: 1000
-      }}
-    >
-      <IconButton sx={{ backgroundColor: 'white', '&:hover': {
-      backgroundColor: 'white', color: "blue" // disables hover change
-    } }}>
-        <VolumeUpIcon />
-      </IconButton>
-      <IconButton sx={{ backgroundColor: 'white' }}>
-        <MicIcon />
-      </IconButton>
-      <IconButton sx={{ backgroundColor: 'white' }}>
-        <VideocamIcon />
-      </IconButton>
-      <IconButton sx={{ backgroundColor: 'red', color: 'white' }}>
-        <CallEndIcon />
-      </IconButton>
-      <IconButton sx={{ backgroundColor: 'white' }}>
-        <GroupIcon />
-      </IconButton>
-    </Box> */}
+            
             <Box
               sx={{
                 position: "fixed",
