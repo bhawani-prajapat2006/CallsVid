@@ -1,8 +1,27 @@
 # 📞 CallsVid — Real-Time Video Calling App</h1> 
 
-**CallsVid** is a real-time, peer-to-peer video calling web application designed to enable seamless one-on-one video communication directly in the browser. Built using modern web technologies like WebRTC, React, and Socket.IO, it provides a secure and responsive interface for users to initiate and receive video calls without requiring third-party tools or browser extensions.
+<br>
+
+![Landing Page](./frontend/public/landingPage.png)
 
 <br>
+
+<div align="center">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="javascript logo"  />
+  <img width="12" />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" alt="react logo"  />
+  <img width="12" />
+  <img width="12" />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" height="40" alt="nodejs logo"  />
+  <img width="12" />
+  <img width="12" />
+</div>
+
+
+## 🎯 OverView
+**CallsVid** is a real-time, peer-to-peer video calling web application designed to enable seamless one-on-one video communication directly in the browser. Built using modern web technologies like WebRTC, React, and Socket.IO, it provides a secure and responsive interface for users to initiate and receive video calls without requiring third-party tools or browser extensions.
 
 ## 🎯 Key Features
 
@@ -30,12 +49,18 @@
 
 <!-- Add screenshots or GIFs here -->
 
-![Landing Page](./frontend/public/landingPage.png)
-![Landing Page](./frontend/public/authPage.png)
-![Landing Page](./frontend/public/homePage.png)
-![Landing Page](./frontend/public/meetPage.png)
-![Landing Page](./frontend/public/chatPage.png)
-![Landing Page](./frontend/public/historyPage.png)
+<p align="center">
+  <img src="./frontend/public/authPage.png" alt="Auth Page" width="450"/>
+  <img src="./frontend/public/homePage.png" alt="Home Page" width="450"/>
+</p>
+
+
+<p align="center">
+  <img src="./frontend/public/meetPage.png" alt="Meet Page" width="300"/>
+  <img src="./frontend/public/chatPage.png" alt="Chat Page" width="300"/>
+  <img src="./frontend/public/historyPage.png" alt="History Page" width="300"/>
+</p>
+
 
 
 <br>
@@ -91,3 +116,43 @@ CallsVid/
 |           └── VideoMeet.jsx
 ├── README.md
 └── LICENSE
+
+```
+
+## 🧰 Installation & setup
+### 🔧 Clone the repository
+```plaintext
+git clone https://github.com/bhawani-prajapat2006/CallsVid.git
+cd CallsVid
+```
+### ⚙️ Backend Setup
+1. Navigate to the backend folder:
+```plaintext
+cd backend
+```
+2. Install dependencies:
+```plaintext
+npm install
+```
+3. Start the server:
+```plaintext
+npm run dev
+```
+
+### 💻 Frontend Setup
+1. Open a new terminal and navigate to the frontend folder:
+```plaintext
+cd ../frontend
+```
+2. Install dependencies:
+```plaintext
+npm install
+```
+3. Create a .env file in frontend/ and set your backend URL:
+```plaintext
+VITE_SERVER_URL=http://localhost:8000
+```
+4. Start the frontend server:
+```plaintext
+npm run dev
+```
