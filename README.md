@@ -29,7 +29,14 @@
 ## 📸 Screenshots
 
 <!-- Add screenshots or GIFs here -->
-*Coming soon*
+
+![Landing Page](./frontend/public/landingPage.png)
+![Landing Page](./frontend/public/authPage.png)
+![Landing Page](./frontend/public/homePage.png)
+![Landing Page](./frontend/public/meetPage.png)
+![Landing Page](./frontend/public/chatPage.png)
+![Landing Page](./frontend/public/historyPage.png)
+
 
 <br>
 
